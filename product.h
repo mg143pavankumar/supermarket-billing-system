@@ -1,14 +1,13 @@
 #include <iostream>
-#include <windows.h>
-#include <conio.h>
 #include <fstream>
+#include <conio.h>
+#include <windows.h>
 
 using namespace std;
 
+
 //global variable declaration
 int k = 7, r = 0, flag = 0;
-
-//For moving cursor to a specific location in the terminal
 COORD coord = {0, 0};
 
 void gotoxy(int x, int y)
@@ -16,64 +15,64 @@ void gotoxy(int x, int y)
     COORD coord;
     coord.X = x;
     coord.Y = y;
-
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-// file handling object declaration
-ofstream fout;
-ifstream fin;
+// function for drawing line
+void drawlines(int lengthOfLine){
+    for(int i = 0; i < lengthOfLine; i++){
+        cout << "=";
+    }
+}
 
 struct date
 {
-    int dd, mm, yy;
+    int mm, dd, yy;
 };
 
-// <============================ Product class ========================================> //
+ofstream fout;
+ifstream fin;
+
 class Product
 {
-    int product_no;
-    char product_name[25];
+    int productNo;
+    char productName[25];
     date d;
 
 public:
     void add()
     {
         cout << "\n\n\tProduct No: ";
-        cin >> product_no;
-
-        cout << "\n\n\tProduct Name: ";
-        cin >> product_name;
-
-        cout << "\n\n\tManufacturing data (dd-mm-yy): ";
-        cin >> d.dd >> d.mm >> d.yy;
+        cin >> productNo;
+        cout << "\n\n\tName of the Product: ";
+        cin >> productName;
+        //gets(name);
+        cout << "\n\n\tManufacturing Date(dd-mm-yy): ";
+        cin >> d.mm >> d.dd >> d.yy;
     }
-
     void show()
     {
-        cout << "\n\tProduct No: " << product_no;
-        cout << "\n\n\tProduct Name: " << product_name;
-        cout << "\n\n\tDate: " << d.dd << "-" << d.mm << "-" << d.yy;
+        cout << "\n\tProduct No: ";
+        cout << productNo;
+        cout << "\n\n\tName of the Product: ";
+        cout << productName;
+        cout << "\n\n\tDate : ";
+        cout << d.mm << "-" << d.dd << "-" << d.yy;
     }
-
     void report()
     {
         gotoxy(3, k);
-        cout << product_no;
-
+        cout << productNo;
         gotoxy(13, k);
-        puts(product_name);
+        puts(productName);
     }
-
     int retno()
     {
-        return (product_no);
+        return (productNo);
     }
 };
 
-// <============================ Amount class ========================================> //
-
-class Amount : public Product
+class amount : public Product
 {
     float price, qty, tax, gross, dis, netamt;
 
@@ -89,9 +88,8 @@ public:
     }
 } amt;
 
-void Amount::add()
+void amount::add()
 {
-
     Product::add();
     cout << "\n\n\tPrice: ";
     cin >> price;
@@ -101,16 +99,18 @@ void Amount::add()
     cin >> tax;
     cout << "\n\n\tDiscount percent: ";
     cin >> dis;
+    calculate();
+    fout.write((char *)&amt, sizeof(amt));
+    fout.close();
 }
-
-void Amount::calculate()
+void amount::calculate()
 {
     gross = price + (price * (tax / 100));
     netamt = qty * (gross - (gross * (dis / 100)));
 }
-void Amount::show()
+void amount::show()
 {
-    fin.open("productstore.dat", ios::binary);
+    fin.open("Productstore.dat", ios::binary);
     fin.read((char *)&amt, sizeof(amt));
     Product::show();
     cout << "\n\n\tNet amount: ";
@@ -118,7 +118,7 @@ void Amount::show()
     fin.close();
 }
 
-void Amount::report()
+void amount::report()
 {
     Product::report();
     gotoxy(23, k);
@@ -140,7 +140,7 @@ void Amount::report()
         k = 7;
         system("cls");
         gotoxy(30, 3);
-        cout << " ITEM DETAILS ";
+        cout << " Product DETAILS ";
         gotoxy(3, 5);
         cout << "NUMBER";
         gotoxy(13, 5);
@@ -158,7 +158,7 @@ void Amount::report()
     }
 }
 
-void Amount::pay()
+void amount::pay()
 {
     show();
     cout << "\n\n\n\t\t*********************************************";
