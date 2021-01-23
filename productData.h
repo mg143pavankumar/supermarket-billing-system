@@ -1,5 +1,7 @@
+#include <iostream>
 #include <string.h>
 #define NumberOfProducts 4
+using namespace std;
 
 class ProductData
 {
@@ -67,31 +69,39 @@ public:
 public:
     void getKitchenProducts()
     {
-        for (int i = 0; i < NumberOfProducts; i++)
+        int i;
+        for (i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << kitchenProductName[i] << " ---->  Rs." << kitchenProductPrice[i] << "\n\n";
         }
+        cout << "\t\t\t\t" << i + 1 << ". Go back\n\n";
     }
 
     void getClothesProducts()
     {
-        for (int i = 0; i < NumberOfProducts; i++)
+        int i;
+        for (i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << clothesProductName[i] << " ---->  Rs." << clothesProductPrice[i] << "\n\n";
         }
+        cout << "\t\t\t\t" << i + 1 << ". Go back\n\n";
     }
     void getElectronicProducts()
     {
-        for (int i = 0; i < NumberOfProducts; i++)
+        int i;
+        for (i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << electronicProductName[i] << " ---->  Rs." << electronicProductPrice[i] << "\n\n";
         }
+        cout << "\t\t\t\t" << i + 1 << ". Go back\n\n";
     }
     void getColdDrinkProducts()
     {
-        for (int i = 0; i < NumberOfProducts; i++)
+        int i;
+        for (i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << coolDrinkProductName[i] << " ---->  Rs." << coolDrinkProductPrice[i] << "\n\n";
         }
+        cout << "\t\t\t\t" << i + 1 << ". Go back\n\n";
     }
 };

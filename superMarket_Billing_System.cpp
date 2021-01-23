@@ -296,9 +296,15 @@ home:
                 }
             }
             break;
+            case 5:
+            {
+                goto choose_section;
+            }
 
             default:
-                break;
+                getUserInput.getError();
+                getUserInput.getKeyboardInput();
+                goto kitchen_products_section;
             }
         }
         break;
@@ -449,8 +455,15 @@ home:
             }
             break;
 
+            case 5:
+            {
+                goto choose_section;
+            }
+
             default:
-                break;
+                getUserInput.getError();
+                getUserInput.getKeyboardInput();
+                goto kitchen_products_section;
             }
         }
 
@@ -602,8 +615,15 @@ home:
             }
             break;
 
+            case 5:
+            {
+                goto choose_section;
+            }
+
             default:
-                break;
+                getUserInput.getError();
+                getUserInput.getKeyboardInput();
+                goto kitchen_products_section;
             }
         }
 
@@ -754,8 +774,15 @@ home:
             }
             break;
 
+            case 5:
+            {
+                goto choose_section;
+            }
+
             default:
-                break;
+                getUserInput.getError();
+                getUserInput.getKeyboardInput();
+                goto kitchen_products_section;
             }
         }
         break;
