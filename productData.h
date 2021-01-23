@@ -1,17 +1,18 @@
 #include <string.h>
+#define NumberOfProducts 4
 
 class ProductData
 {
 protected:
     //Kitchen products details
-    string kitchenProductName[4] = {
+    string kitchenProductName[NumberOfProducts] = {
         "Plate",
         "Bottle",
         "Pressure Cooker",
         "Pan",
     };
 
-    int kitchenProductPrice[4] = {
+    int kitchenProductPrice[NumberOfProducts] = {
         30,
         25,
         412,
@@ -19,14 +20,14 @@ protected:
     };
 
     //Clothes products details
-    string clothesProductName[4] = {
+    string clothesProductName[NumberOfProducts] = {
         "T-shirts",
         "Shirts",
         "Pants",
         "jacket",
     };
 
-    int clothesProductPrice[4] = {
+    int clothesProductPrice[NumberOfProducts] = {
         150,
         250,
         180,
@@ -34,14 +35,14 @@ protected:
     };
 
     //Electronic products details
-    string electronicProductName[4] = {
+    string electronicProductName[NumberOfProducts] = {
         "Watch",
         "Keyboard",
         "Mouse",
         "Bulb",
     };
 
-    int electronicProductPrice[4] = {
+    int electronicProductPrice[NumberOfProducts] = {
         800,
         999,
         400,
@@ -49,14 +50,14 @@ protected:
     };
     
     //Cold Drinks products details
-    string coldDrinkProductName[4] = {
+    string coldDrinkProductName[NumberOfProducts] = {
         "Mango juice",
-        "Appke juice",
+        "Apple juice",
         "ThumsUp",
         "Pepsi",
     };
 
-    int coldDrinkProductPrice[4] = {
+    int coldDrinkProductPrice[NumberOfProducts] = {
         20,
         20,
         20,
@@ -67,7 +68,7 @@ protected:
 public:
     void getKitchenProducts()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << kitchenProductName[i] << " ---->  Rs." << kitchenProductPrice[i] << "\n\n";
         }
@@ -75,21 +76,21 @@ public:
 
     void getClothesProducts()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << clothesProductName[i] << " ---->  Rs." << clothesProductPrice[i] << "\n\n";
         }
     }
     void getElectronicProducts()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << electronicProductName[i] << " ---->  Rs." << electronicProductPrice[i] << "\n\n";
         }
     }
     void getColdDrinkProducts()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < NumberOfProducts; i++)
         {
             cout << "\t\t\t\t" << i + 1 << ". " << coldDrinkProductName[i] << " ---->  Rs." << coldDrinkProductPrice[i] << "\n\n";
         }
