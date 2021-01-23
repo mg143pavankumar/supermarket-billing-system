@@ -7,10 +7,31 @@
 #include <iomanip>
 
 #include "product.h"
+#include "productData.h"
+
+#define BLUE "\u001b[34m"
+#define RED "\u001b[31m"
+#define YELLOW "\u001b[33m"
 using namespace std;
 
+class GetUserInput
+{
+public:
+    void getOptions(string options)
+    {
+        cout << "\t\t\t\t" << options;
+    }
+
+    void getError()
+    {
+        cout << RED "\t\t\t\tPlease enter valid option..... !";
+    }
+};
+
 int main()
-{   
+{
+    GetUserInput getUserInput;
+    ProductData productData;
     cout.setf(ios::fixed);
     cout.setf(ios::showpoint);
     cout << setprecision(2);
@@ -22,34 +43,125 @@ home:
 
     // locating content at the center of the terminal
     gotoxy(25, 2);
-    cout << "<<<<<<<<<<<<<<<<<<<< Welcome To Our Super Market >>>>>>>>>>>>>>>>>>>>" << endl;
+    cout << BLUE "<<<<<<<<<<<<<<<<<<<< Welcome To Our Super Market >>>>>>>>>>>>>>>>>>>>\n\n"
+         << endl;
 
-    gotoxy(5, 4);
-    cout << "\t\t\t\tChoose who you are ?\n\n";
-    cout << "\t\t\t\t1. Customer \n\n";
-    cout << "\t\t\t\t2. Admin \n\n";
-    cout << "\t\t\t\t3. Exit\n\n";
-    cout << "\t\t\t\tSelect your option: ";
+    // gotoxy(25, 3);
+    getUserInput.getOptions("Choose who you are ?\n\n");
+    getUserInput.getOptions("1. Customer\n\n");
+    getUserInput.getOptions("2. Admin\n\n");
+    getUserInput.getOptions("3. Exit\n\n");
+    getUserInput.getOptions("Select your option: ");
     cin >> user;
 
     if (user == 1)
     {
-        //customer code
+
+        int user;
+
+    choose_section:
+        system("cls");
+        gotoxy(25, 2);
+        cout << BLUE "<<<<<<<<<<<<<<<<<<<< Welcome To Our Super Market >>>>>>>>>>>>>>>>>>>>" << endl;
+
+        gotoxy(5, 4);
+        getUserInput.getOptions("Choose which section you want to visit ?\n\n");
+        getUserInput.getOptions("1. Kitchen\n\n");
+        getUserInput.getOptions("2. Clothes\n\n");
+        getUserInput.getOptions("3. Electronic\n\n");
+        getUserInput.getOptions("4. Cold Drinks\n\n");
+        getUserInput.getOptions(RED "5. Back to home\n\n");
+        getUserInput.getOptions(BLUE "Select your option: ");
+        cin >> user;
+
+        switch (user)
+        {
+        case 1:
+        {
+            int user;
+            system("cls");
+            gotoxy(25, 2);
+            cout << BLUE "<<<<<<<<<<<<<<<<<<<< Kitchen Section >>>>>>>>>>>>>>>>>>>>" << endl;
+
+            gotoxy(5, 4);
+            getUserInput.getOptions("Choose which product you want to buy ?\n\n");
+            productData.getKitchenProducts();
+            getUserInput.getOptions("Select you product: ");
+
+            cin >> user;
+        }
+        break;
+        case 2:
+        {
+            int user;
+            system("cls");
+            gotoxy(25, 2);
+            cout << BLUE "<<<<<<<<<<<<<<<<<<<< Clothes Section >>>>>>>>>>>>>>>>>>>>" << endl;
+
+            gotoxy(5, 4);
+            getUserInput.getOptions("Choose which product you want to buy ?\n\n");
+            productData.getClothesProducts();
+            getUserInput.getOptions("Select you product: ");
+
+            cin >> user;
+        }
+
+        break;
+        case 3:
+        {
+            int user;
+            system("cls");
+            gotoxy(25, 2);
+            cout << BLUE "<<<<<<<<<<<<<<<<<<<< Electronic Section >>>>>>>>>>>>>>>>>>>>" << endl;
+
+            gotoxy(5, 4);
+            getUserInput.getOptions("Choose which product you want to buy ?\n\n");
+            productData.getElectronicProducts();
+            getUserInput.getOptions("Select you product: ");
+
+            cin >> user;
+        }
+
+        break;
+        case 4:
+        {
+            int user;
+            system("cls");
+            gotoxy(25, 2);
+            cout << BLUE "<<<<<<<<<<<<<<<<<<<< Cold Drinks Section >>>>>>>>>>>>>>>>>>>>" << endl;
+
+            gotoxy(5, 4);
+            getUserInput.getOptions("Choose which product you want to buy ?\n\n");
+            productData.getColdDrinkProducts();
+            getUserInput.getOptions("Select you product: ");
+
+            cin >> user;
+        }
+        break;
+        case 5:
+            goto home;
+
+        default:
+            cout << "\n\n";
+            getUserInput.getError();
+
+            cout << YELLOW "\n\n\t\t\t\t<<< Press any key to go back to section options >>>\n\n";
+            getch();
+            goto choose_section;
+        }
     }
     else if (user == 2)
     {
         system("cls");
 
         int _user;
-        gotoxy(25,2);
-        cout << "Admin login\n";
-        
-        gotoxy(22,3);
-        drawlines(15);
+        gotoxy(25, 2);
+        cout << "<<<<<<<<<<<<<<<<<<<< Admin Login >>>>>>>>>>>>>>>>>>>>\n\n";
 
-        cout << "\n\t\t1. Login\n\n";
-        cout << "\t\t2.Back to home\n\n";
-        cout << "\t\tSelect your option: ";
+        // gotoxy(22,3);
+        getUserInput.getOptions("1. Login\n\n");
+        getUserInput.getOptions("2. Back to home\n\n");
+        getUserInput.getOptions("Select your option: ");
         cin >> _user;
 
         if (_user == 1)
@@ -57,21 +169,16 @@ home:
         login:
             system("cls");
             gotoxy(25, 2);
-            cout << "Admin login\n";
-            
-            gotoxy(25, 3);
-            drawlines(15);
+            cout << "<<<<<<<<<<<<<<<<<<<< Admin Login >>>>>>>>>>>>>>>>>>>>\n\n";
 
             string _adminName("supermarket@admin.com");
             string adminName;
             int _password = 123456, psw;
 
-            gotoxy(25,4);
-            cout << "\n\nEnter email address: ";
+            getUserInput.getOptions("Enter email address: ");
             cin >> adminName;
 
-            gotoxy(25,5);
-            cout << "\n\nEnter password: ";
+            getUserInput.getOptions("Enter password: ");
             cin >> psw;
 
             if (adminName.compare(_adminName) == 0 && (psw == _password))
@@ -79,10 +186,7 @@ home:
             menu:
                 system("cls");
                 gotoxy(25, 2);
-                cout << "Super Market Billing ";
-                
-                gotoxy(25, 3);
-                drawlines(20);
+                cout << "<<<<<<<<<<<<<<<<<<<< Super Market Billing >>>>>>>>>>>>>>>>>>>>\n\n";
 
                 cout << "\n\t\t1.Bill Report\n\n";
                 cout << "\t\t2.Add/Remove/Edit Product\n\n";
@@ -343,7 +447,9 @@ home:
         {
             goto home;
         }
-    }else if(user == 3){
+    }
+    else if (user == 3)
+    {
         exit(1);
     }
     return 0;
