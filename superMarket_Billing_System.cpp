@@ -24,14 +24,87 @@ public:
 
     void getError()
     {
-        cout << RED "\t\t\t\tPlease enter valid option..... !";
+        cout << RED "\n\t\t\t\tPlease enter valid option..... !";
+    }
+
+    void getQuantity(string productName)
+    {
+        cout << "\t\t\t\tEnter number of " << productName << ": ";
+    }
+
+    void getKeyboardInput()
+    {
+        cout << BLUE "\n\n\t\t\t\t<<<<< Enter any key to go back >>>>>\n\n";
+        getch();
+    }
+};
+
+class PaymentDetails : public ProductData, public amount
+{
+    float userAmount;
+    int qty;
+
+public:
+    void getNumberOfItems(string itemName)
+    {
+        cout << "\n\n\t\t\t\tEnter number of " << itemName << ": ";
+        cin >> qty;
+    }
+
+    void cal_kitchenProduct_payment(int itemNo)
+    {
+        amount::price = kitchenProductPrice[itemNo];
+        amount::qty = qty;
+        amount::calculate();
+
+        system("cls");
+        amount::pay();
+    }
+    void cal_ClothesProduct_payment(int itemNo)
+    {
+        amount::price = kitchenProductPrice[itemNo];
+        amount::qty = qty;
+        amount::calculate();
+
+        system("cls");
+        amount::pay();
+    }
+    void cal_ElectronicProduct_payment(int itemNo)
+    {
+        amount::price = kitchenProductPrice[itemNo];
+        amount::qty = qty;
+        amount::calculate();
+
+        system("cls");
+        amount::pay();
+    }
+    void cal_CoolDrinkProduct_payment(int itemNo)
+    {
+        amount::price = kitchenProductPrice[itemNo];
+        amount::qty = qty;
+        amount::calculate();
+
+        system("cls");
+        amount::pay();
+    }
+
+    void getUserAmount()
+    {
+        cout << "\n\n";
+        cout << "\t\tEnter customer amount Rs.";
+        cin >> userAmount;
+
+        cout << "\n\t\tRefund Rs. " << userAmount - amount::netamt << "\n";
+        cout << "\n\n\t\t********** THANK YOU FOR VISITING **********\n\n";
     }
 };
 
 int main()
 {
     GetUserInput getUserInput;
+    PaymentDetails paymentDetails;
     ProductData productData;
+
     cout.setf(ios::fixed);
     cout.setf(ios::showpoint);
     cout << setprecision(2);
@@ -69,7 +142,7 @@ home:
         getUserInput.getOptions("1. Kitchen\n\n");
         getUserInput.getOptions("2. Clothes\n\n");
         getUserInput.getOptions("3. Electronic\n\n");
-        getUserInput.getOptions("4. Cold Drinks\n\n");
+        getUserInput.getOptions("4. Cool Drinks\n\n");
         getUserInput.getOptions(RED "5. Back to home\n\n");
         getUserInput.getOptions(BLUE "Select your option: ");
         cin >> user;
@@ -79,6 +152,7 @@ home:
         case 1:
         {
             int user;
+
             system("cls");
             gotoxy(25, 2);
             cout << BLUE "<<<<<<<<<<<<<<<<<<<< Kitchen Section >>>>>>>>>>>>>>>>>>>>" << endl;
@@ -86,9 +160,79 @@ home:
             gotoxy(5, 4);
             getUserInput.getOptions("Choose which product you want to buy ?\n\n");
             productData.getKitchenProducts();
-            getUserInput.getOptions("Select you product: ");
+            getUserInput.getOptions("Select your product: ");
 
             cin >> user;
+
+            switch (user)
+            {
+            case 1:
+            {
+
+                int user;
+            kitchen_product1:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< Plates >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Plates\n\n");
+                getUserInput.getOptions("2. Back to kitchen section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.kitchenProductName[1]);
+                    paymentDetails.cal_kitchenProduct_payment(0);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto choose_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto kitchen_product1;
+                }
+            }
+            break;
+            case 2:{
+                int user;
+            kitchen_product2:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< Plates >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Plates\n\n");
+                getUserInput.getOptions("2. Back to kitchen section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.kitchenProductName[1]);
+                    paymentDetails.cal_kitchenProduct_payment(1);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto choose_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto kitchen_product2;
+                }
+            }
+
+            default:
+                break;
+            }
         }
         break;
         case 2:
@@ -101,7 +245,7 @@ home:
             gotoxy(5, 4);
             getUserInput.getOptions("Choose which product you want to buy ?\n\n");
             productData.getClothesProducts();
-            getUserInput.getOptions("Select you product: ");
+            getUserInput.getOptions("Select your product: ");
 
             cin >> user;
         }
@@ -117,7 +261,7 @@ home:
             gotoxy(5, 4);
             getUserInput.getOptions("Choose which product you want to buy ?\n\n");
             productData.getElectronicProducts();
-            getUserInput.getOptions("Select you product: ");
+            getUserInput.getOptions("Select your product: ");
 
             cin >> user;
         }
@@ -133,7 +277,7 @@ home:
             gotoxy(5, 4);
             getUserInput.getOptions("Choose which product you want to buy ?\n\n");
             productData.getColdDrinkProducts();
-            getUserInput.getOptions("Select you product: ");
+            getUserInput.getOptions("Select your product: ");
 
             cin >> user;
         }

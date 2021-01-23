@@ -3,7 +3,7 @@
 
 class ProductData
 {
-protected:
+public:
     //Kitchen products details
     string kitchenProductName[NumberOfProducts] = {
         "Plate",
@@ -12,7 +12,7 @@ protected:
         "Pan",
     };
 
-    int kitchenProductPrice[NumberOfProducts] = {
+    float kitchenProductPrice[NumberOfProducts] = {
         30,
         25,
         412,
@@ -27,7 +27,7 @@ protected:
         "jacket",
     };
 
-    int clothesProductPrice[NumberOfProducts] = {
+    float clothesProductPrice[NumberOfProducts] = {
         150,
         250,
         180,
@@ -42,7 +42,7 @@ protected:
         "Bulb",
     };
 
-    int electronicProductPrice[NumberOfProducts] = {
+    float electronicProductPrice[NumberOfProducts] = {
         800,
         999,
         400,
@@ -57,7 +57,7 @@ protected:
         "Pepsi",
     };
 
-    int coldDrinkProductPrice[NumberOfProducts] = {
+    float coldDrinkProductPrice[NumberOfProducts] = {
         20,
         20,
         20,
@@ -95,4 +95,6 @@ public:
             cout << "\t\t\t\t" << i + 1 << ". " << coldDrinkProductName[i] << " ---->  Rs." << coldDrinkProductPrice[i] << "\n\n";
         }
     }
+
+
 };

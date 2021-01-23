@@ -5,7 +5,6 @@
 
 using namespace std;
 
-
 //global variable declaration
 int k = 7, r = 0, flag = 0;
 COORD coord = {0, 0};
@@ -19,8 +18,10 @@ void gotoxy(int x, int y)
 }
 
 // function for drawing line
-void drawlines(int lengthOfLine){
-    for(int i = 0; i < lengthOfLine; i++){
+void drawlines(int lengthOfLine)
+{
+    for (int i = 0; i < lengthOfLine; i++)
+    {
         cout << "=";
     }
 }
@@ -74,9 +75,9 @@ public:
 
 class amount : public Product
 {
-    float price, qty, tax, gross, dis, netamt;
 
 public:
+    float price, qty, tax, gross, dis, netamt;
     void add();
     void show();
     void report();
@@ -160,7 +161,7 @@ void amount::report()
 
 void amount::pay()
 {
-    show();
+    // show();
     cout << "\n\n\n\t\t*********************************************";
     cout << "\n\t\t                 DETAILS                  ";
     cout << "\n\t\t*********************************************";
