@@ -62,7 +62,7 @@ public:
     }
     void cal_ClothesProduct_payment(int itemNo)
     {
-        amount::price = kitchenProductPrice[itemNo];
+        amount::price = clothesProductPrice[itemNo];
         amount::qty = qty;
         amount::calculate();
 
@@ -71,7 +71,7 @@ public:
     }
     void cal_ElectronicProduct_payment(int itemNo)
     {
-        amount::price = kitchenProductPrice[itemNo];
+        amount::price = electronicProductPrice[itemNo];
         amount::qty = qty;
         amount::calculate();
 
@@ -80,7 +80,7 @@ public:
     }
     void cal_CoolDrinkProduct_payment(int itemNo)
     {
-        amount::price = kitchenProductPrice[itemNo];
+        amount::price = coolDrinkProductPrice[itemNo];
         amount::qty = qty;
         amount::calculate();
 
@@ -152,7 +152,7 @@ home:
         case 1:
         {
             int user;
-
+        kitchen_products_section:
             system("cls");
             gotoxy(25, 2);
             cout << BLUE "<<<<<<<<<<<<<<<<<<<< Kitchen Section >>>>>>>>>>>>>>>>>>>>" << endl;
@@ -170,10 +170,10 @@ home:
             {
 
                 int user;
-            kitchen_product1:
+            kitchen_product0:
                 system("cls");
                 gotoxy(25, 2);
-                cout << BLUE "<<<<<<<<<<<<<<<<<<<< Plates >>>>>>>>>>>>>>>>>>>>" << endl;
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.kitchenProductName[0] << " >>>>>>>>>>>>>>>>>>>>" << endl;
                 getUserInput.getOptions("1. To Buy Plates\n\n");
                 getUserInput.getOptions("2. Back to kitchen section\n\n");
                 getUserInput.getOptions("Select your option: ");
@@ -183,29 +183,30 @@ home:
                 {
                 case 1:
                 {
-                    paymentDetails.getNumberOfItems(productData.kitchenProductName[1]);
+                    paymentDetails.getNumberOfItems(productData.kitchenProductName[0]);
                     paymentDetails.cal_kitchenProduct_payment(0);
                     paymentDetails.getUserAmount();
                 }
                 break;
                 case 2:
                 {
-                    goto choose_section;
+                    goto kitchen_products_section;
                 }
                 default:
                     getUserInput.getError();
                     getUserInput.getKeyboardInput();
-                    goto kitchen_product1;
+                    goto kitchen_product0;
                 }
             }
             break;
-            case 2:{
+            case 2:
+            {
                 int user;
-            kitchen_product2:
+            kitchen_product1:
                 system("cls");
                 gotoxy(25, 2);
-                cout << BLUE "<<<<<<<<<<<<<<<<<<<< Plates >>>>>>>>>>>>>>>>>>>>" << endl;
-                getUserInput.getOptions("1. To Buy Plates\n\n");
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.kitchenProductName[1] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Bottles\n\n");
                 getUserInput.getOptions("2. Back to kitchen section\n\n");
                 getUserInput.getOptions("Select your option: ");
                 cin >> user;
@@ -221,7 +222,40 @@ home:
                 break;
                 case 2:
                 {
-                    goto choose_section;
+                    goto kitchen_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto kitchen_product1;
+                }
+            }
+
+            break;
+            case 3:
+            {
+                int user;
+            kitchen_product2:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.kitchenProductName[2] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Pressure Cooker\n\n");
+                getUserInput.getOptions("2. Back to kitchen section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.kitchenProductName[2]);
+                    paymentDetails.cal_kitchenProduct_payment(2);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto kitchen_products_section;
                 }
                 default:
                     getUserInput.getError();
@@ -229,6 +263,39 @@ home:
                     goto kitchen_product2;
                 }
             }
+            break;
+            case 4:
+            {
+                int user;
+            kitchen_product3:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.kitchenProductName[3] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Pans\n\n");
+                getUserInput.getOptions("2. Back to kitchen section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.kitchenProductName[3]);
+                    paymentDetails.cal_kitchenProduct_payment(3);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto kitchen_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto kitchen_product2;
+                }
+            }
+            break;
 
             default:
                 break;
@@ -238,6 +305,7 @@ home:
         case 2:
         {
             int user;
+        clothes_products_section:
             system("cls");
             gotoxy(25, 2);
             cout << BLUE "<<<<<<<<<<<<<<<<<<<< Clothes Section >>>>>>>>>>>>>>>>>>>>" << endl;
@@ -248,12 +316,150 @@ home:
             getUserInput.getOptions("Select your product: ");
 
             cin >> user;
+            switch (user)
+            {
+            case 1:
+            {
+
+                int user;
+            clothes_product0:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.clothesProductName[0] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy T-shirts\n\n");
+                getUserInput.getOptions("2. Back to clothes section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.clothesProductName[0]);
+                    paymentDetails.cal_ClothesProduct_payment(0);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto clothes_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto clothes_product0;
+                }
+            }
+            break;
+            case 2:
+            {
+                int user;
+            clothes_product1:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.clothesProductName[1] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Shirts\n\n");
+                getUserInput.getOptions("2. Back to clothes section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.clothesProductName[1]);
+                    paymentDetails.cal_ClothesProduct_payment(1);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto clothes_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto clothes_product1;
+                }
+            }
+
+            break;
+            case 3:
+            {
+                int user;
+            clothes_product2:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.clothesProductName[2] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Pants\n\n");
+                getUserInput.getOptions("2. Back to clothes section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.clothesProductName[2]);
+                    paymentDetails.cal_ClothesProduct_payment(2);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto clothes_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto clothes_product2;
+                }
+            }
+            break;
+            case 4:
+            {
+                int user;
+            clothes_product3:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.clothesProductName[3] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy jacket\n\n");
+                getUserInput.getOptions("2. Back to clothes section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.clothesProductName[3]);
+                    paymentDetails.cal_ClothesProduct_payment(3);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto clothes_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto clothes_product2;
+                }
+            }
+            break;
+
+            default:
+                break;
+            }
         }
 
         break;
         case 3:
         {
             int user;
+
+        electronic_products_section:
             system("cls");
             gotoxy(25, 2);
             cout << BLUE "<<<<<<<<<<<<<<<<<<<< Electronic Section >>>>>>>>>>>>>>>>>>>>" << endl;
@@ -264,12 +470,148 @@ home:
             getUserInput.getOptions("Select your product: ");
 
             cin >> user;
+
+            switch (user)
+            {
+            case 1:
+            {
+                int user;
+            electronic_product0:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.electronicProductName[0] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Watch\n\n");
+                getUserInput.getOptions("2. Back to electronic section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.electronicProductName[0]);
+                    paymentDetails.cal_ElectronicProduct_payment(0);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto electronic_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto electronic_product0;
+                }
+            }
+            break;
+            case 2:
+            {
+                int user;
+            electronic_product1:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.electronicProductName[1] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Keyboard\n\n");
+                getUserInput.getOptions("2. Back to electronic section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.electronicProductName[1]);
+                    paymentDetails.cal_ElectronicProduct_payment(1);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto electronic_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto electronic_product1;
+                }
+            }
+            break;
+            case 3:
+            {
+                int user;
+            electronic_product2:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.electronicProductName[2] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Mouse\n\n");
+                getUserInput.getOptions("2. Back to electronic section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.electronicProductName[2]);
+                    paymentDetails.cal_ElectronicProduct_payment(2);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto electronic_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto electronic_product2;
+                }
+            }
+            break;
+            case 4:
+            {
+                int user;
+            electronic_product3:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.electronicProductName[3] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Bulb\n\n");
+                getUserInput.getOptions("2. Back to electronic section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.electronicProductName[3]);
+                    paymentDetails.cal_ElectronicProduct_payment(3);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto electronic_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto electronic_product3;
+                }
+            }
+            break;
+
+            default:
+                break;
+            }
         }
 
         break;
         case 4:
         {
             int user;
+        coolDrinks_products_section:
             system("cls");
             gotoxy(25, 2);
             cout << BLUE "<<<<<<<<<<<<<<<<<<<< Cold Drinks Section >>>>>>>>>>>>>>>>>>>>" << endl;
@@ -280,6 +622,141 @@ home:
             getUserInput.getOptions("Select your product: ");
 
             cin >> user;
+
+            switch (user)
+            {
+            case 1:
+            {
+                int user;
+            coolDrink_product0:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.coolDrinkProductName[0] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Mango juice\n\n");
+                getUserInput.getOptions("2. Back to cool drinks section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.coolDrinkProductName[0]);
+                    paymentDetails.cal_CoolDrinkProduct_payment(0);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto coolDrinks_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto coolDrink_product0;
+                }
+            }
+            break;
+            case 2:
+            {
+                int user;
+            coolDrink_product1:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.coolDrinkProductName[1] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Apple juice\n\n");
+                getUserInput.getOptions("2. Back to cool drinks section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.coolDrinkProductName[1]);
+                    paymentDetails.cal_CoolDrinkProduct_payment(1);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto coolDrinks_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto coolDrink_product1;
+                }
+            }
+            break;
+            case 3:
+            {
+                int user;
+            coolDrink_product2:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.coolDrinkProductName[2] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Apple juice\n\n");
+                getUserInput.getOptions("2. Back to cool drinks section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.coolDrinkProductName[2]);
+                    paymentDetails.cal_CoolDrinkProduct_payment(2);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto coolDrinks_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto coolDrink_product2;
+                }
+            }
+            break;
+            case 4:
+            {
+                int user;
+            coolDrink_product3:
+                system("cls");
+                gotoxy(25, 2);
+                cout << BLUE "<<<<<<<<<<<<<<<<<<<< " << productData.coolDrinkProductName[3] << " >>>>>>>>>>>>>>>>>>>>" << endl;
+                getUserInput.getOptions("1. To Buy Apple juice\n\n");
+                getUserInput.getOptions("2. Back to cool drinks section\n\n");
+                getUserInput.getOptions("Select your option: ");
+                cin >> user;
+
+                switch (user)
+                {
+                case 1:
+                {
+                    paymentDetails.getNumberOfItems(productData.coolDrinkProductName[3]);
+                    paymentDetails.cal_CoolDrinkProduct_payment(3);
+                    paymentDetails.getUserAmount();
+                }
+                break;
+                case 2:
+                {
+                    goto coolDrinks_products_section;
+                }
+                default:
+                    getUserInput.getError();
+                    getUserInput.getKeyboardInput();
+                    goto coolDrink_product3;
+                }
+            }
+            break;
+
+            default:
+                break;
+            }
         }
         break;
         case 5:

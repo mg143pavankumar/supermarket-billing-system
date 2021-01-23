@@ -48,22 +48,21 @@ public:
         400,
         50,
     };
-    
+
     //Cold Drinks products details
-    string coldDrinkProductName[NumberOfProducts] = {
+    string coolDrinkProductName[NumberOfProducts] = {
         "Mango juice",
         "Apple juice",
         "ThumsUp",
         "Pepsi",
     };
 
-    float coldDrinkProductPrice[NumberOfProducts] = {
+    float coolDrinkProductPrice[NumberOfProducts] = {
         20,
         20,
         20,
         20,
     };
-
 
 public:
     void getKitchenProducts()
@@ -92,9 +91,7 @@ public:
     {
         for (int i = 0; i < NumberOfProducts; i++)
         {
-            cout << "\t\t\t\t" << i + 1 << ". " << coldDrinkProductName[i] << " ---->  Rs." << coldDrinkProductPrice[i] << "\n\n";
+            cout << "\t\t\t\t" << i + 1 << ". " << coolDrinkProductName[i] << " ---->  Rs." << coolDrinkProductPrice[i] << "\n\n";
         }
     }
-
-
 };
