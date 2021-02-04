@@ -144,7 +144,7 @@ void amount::report()
         cout << "PRICE";
     }
 }
-//amount
+//amount //
 void amount::pay()
 {
     // show();
