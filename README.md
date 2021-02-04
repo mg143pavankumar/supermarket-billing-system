@@ -1,2 +1,2 @@
 # supermarket-billing-system
-### Still under progress ..................😘😊
+### Still under progress ..................
