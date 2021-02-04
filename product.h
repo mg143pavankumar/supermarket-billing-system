@@ -94,12 +94,6 @@ void amount::add()
     Product::add();
     cout << "\n\n\tPrice: ";
     cin >> price;
-    cout << "\n\n\tQuantity: ";
-    cin >> qty;
-    cout << "\n\n\tTax percent: ";
-    cin >> tax;
-    cout << "\n\n\tDiscount percent: ";
-    cin >> dis;
     calculate();
     fout.write((char *)&amt, sizeof(amt));
     fout.close();
@@ -148,14 +142,6 @@ void amount::report()
         cout << "NAME";
         gotoxy(23, 5);
         cout << "PRICE";
-        gotoxy(33, 5);
-        cout << "QUANTITY";
-        gotoxy(44, 5);
-        cout << "TAX";
-        gotoxy(52, 5);
-        cout << "DEDUCTION";
-        gotoxy(64, 5);
-        cout << "NET AMOUNT";
     }
 }
 

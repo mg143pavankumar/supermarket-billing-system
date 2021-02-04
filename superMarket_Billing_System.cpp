@@ -39,7 +39,7 @@ public:
     }
 };
 
-class PaymentDetails : public ProductData, public amount
+class PaymentDetails : public ProductData, public amount, public GetUserInput
 {
     float userAmount;
     int qty;
@@ -96,6 +96,7 @@ public:
 
         cout << "\n\t\tRefund Rs. " << userAmount - amount::netamt << "\n";
         cout << "\n\n\t\t********** THANK YOU FOR VISITING **********\n\n";
+        getKeyboardInput();
     }
 };
 
@@ -186,6 +187,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.kitchenProductName[0]);
                     paymentDetails.cal_kitchenProduct_payment(0);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -218,6 +220,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.kitchenProductName[1]);
                     paymentDetails.cal_kitchenProduct_payment(1);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -251,6 +254,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.kitchenProductName[2]);
                     paymentDetails.cal_kitchenProduct_payment(2);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -283,6 +287,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.kitchenProductName[3]);
                     paymentDetails.cal_kitchenProduct_payment(3);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -344,6 +349,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.clothesProductName[0]);
                     paymentDetails.cal_ClothesProduct_payment(0);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -376,6 +382,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.clothesProductName[1]);
                     paymentDetails.cal_ClothesProduct_payment(1);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -409,6 +416,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.clothesProductName[2]);
                     paymentDetails.cal_ClothesProduct_payment(2);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -441,6 +449,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.clothesProductName[3]);
                     paymentDetails.cal_ClothesProduct_payment(3);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -505,6 +514,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.electronicProductName[0]);
                     paymentDetails.cal_ElectronicProduct_payment(0);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -537,6 +547,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.electronicProductName[1]);
                     paymentDetails.cal_ElectronicProduct_payment(1);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -569,6 +580,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.electronicProductName[2]);
                     paymentDetails.cal_ElectronicProduct_payment(2);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -601,6 +613,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.electronicProductName[3]);
                     paymentDetails.cal_ElectronicProduct_payment(3);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -664,6 +677,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.coolDrinkProductName[0]);
                     paymentDetails.cal_CoolDrinkProduct_payment(0);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -696,6 +710,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.coolDrinkProductName[1]);
                     paymentDetails.cal_CoolDrinkProduct_payment(1);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -728,6 +743,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.coolDrinkProductName[2]);
                     paymentDetails.cal_CoolDrinkProduct_payment(2);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -760,6 +776,7 @@ home:
                     paymentDetails.getNumberOfItems(productData.coolDrinkProductName[3]);
                     paymentDetails.cal_CoolDrinkProduct_payment(3);
                     paymentDetails.getUserAmount();
+                    goto choose_section;
                 }
                 break;
                 case 2:
@@ -834,12 +851,11 @@ home:
             menu:
                 system("cls");
                 gotoxy(25, 2);
-                cout << "<<<<<<<<<<<<<<<<<<<< Super Market Billing >>>>>>>>>>>>>>>>>>>>\n\n";
+                cout << "<<<<<<<<<<<<<<<<<<<< Super Market Dashboard >>>>>>>>>>>>>>>>>>>>\n\n";
 
-                cout << "\n\t\t1.Bill Report\n\n";
+                cout << "\n\t\t1.Product Report\n\n";
                 cout << "\t\t2.Add/Remove/Edit Product\n\n";
-                cout << "\t\t3.Show Product Details\n\n";
-                cout << "\t\t4.Exit\n\n";
+                cout << "\t\t3.Exit\n\n";
                 cout << "\t\tPlease Enter Required Option: ";
                 int ch, ff;
                 float gtotal;
@@ -850,7 +866,7 @@ home:
                 ss:
                     system("cls");
                     gotoxy(25, 2);
-                    cout << "Bill Details";
+                    cout << "Product Details";
                     gotoxy(25, 3);
                     drawlines(15);
                     cout << "\n\t\t1.All Products\n\n";
@@ -862,21 +878,13 @@ home:
                     {
                         system("cls");
                         gotoxy(30, 3);
-                        cout << " BILL DETAILS ";
+                        cout << " PRODUCT DETAILS ";
                         gotoxy(3, 5);
-                        cout << "Product NO";
+                        cout << "PRODUCT NO";
                         gotoxy(13, 5);
                         cout << "NAME";
                         gotoxy(23, 5);
                         cout << "PRICE";
-                        gotoxy(33, 5);
-                        cout << "QUANTITY";
-                        gotoxy(44, 5);
-                        cout << "TAX %";
-                        gotoxy(52, 5);
-                        cout << "DISCOUNT %";
-                        gotoxy(64, 5);
-                        cout << "NET AMOUNT";
                         fin.open("Productstore.dat", ios::binary);
                         if (!fin)
                         {
@@ -911,7 +919,7 @@ home:
                 db:
                     system("cls");
                     gotoxy(25, 2);
-                    cout << "Bill Editor";
+                    cout << "Product Editor";
                     gotoxy(25, 3);
                     drawlines(15);
                     cout << "\n\n\n\t\t1.Add Product Details\n\n";
