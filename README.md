@@ -40,6 +40,8 @@ It would be best if you are familiar with the following concepts in C++ before j
 
 <!-- USAGE EXAMPLES -->
 ## About the project
+![BeFunky-collage](https://user-images.githubusercontent.com/68140538/107849874-25622880-6e24-11eb-82ae-68f76334262c.png)
+![BeFunky-collage (1)](https://user-images.githubusercontent.com/68140538/107849877-272bec00-6e24-11eb-8658-1ab82659b4b2.png)
 
 
 <!-- ROADMAP -->
